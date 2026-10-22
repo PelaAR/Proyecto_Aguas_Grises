@@ -3319,45 +3319,30 @@
     <!-- ================= JAVASCRIPT PRINCIPAL ================= -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      // --- INICIALIZAR ANIMACIONES AOS ---
-      AOS.init({ once: true, offset: 50 });
+        // --- INICIALIZAR ANIMACIONES AOS ---
+        AOS.init({ once: true, offset: 50 });
 
-      // --- DARK MODE LOGIC ---
-      const themeToggleBtn = document.getElementById("theme-toggle");
-      const mobileThemeToggleBtn = document.getElementById(
-        "mobile-theme-toggle",
-      );
-      const darkIcon = document.getElementById("theme-toggle-dark-icon");
-      const lightIcon = document.getElementById("theme-toggle-light-icon");
+        // --- DARK MODE LOGIC ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-        lightIcon.classList.remove("hidden");
-      } else {
-        document.documentElement.classList.remove("dark");
-        darkIcon.classList.remove("hidden");
-      }
+        // Por defecto, siempre forzamos el modo claro al acceder
+        document.documentElement.classList.remove('dark');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
 
-      function toggleTheme() {
-        darkIcon.classList.toggle("hidden");
-        lightIcon.classList.toggle("hidden");
-
-        if (document.documentElement.classList.contains("dark")) {
-          document.documentElement.classList.remove("dark");
-          localStorage.setItem("color-theme", "light");
-        } else {
-          document.documentElement.classList.add("dark");
-          localStorage.setItem("color-theme", "dark");
+        function toggleTheme() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+            document.documentElement.classList.toggle('dark');
         }
-      }
-      themeToggleBtn.addEventListener("click", toggleTheme);
-      mobileThemeToggleBtn.addEventListener("click", toggleTheme);
+        
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
 
-      // --- COMPONENTES Y PLANOS ---
+        // --- COMPONENTES Y PLANOS ---
       const SIDEREA_COMPONENTS = [
         {
           id: 1,
